@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:stockapptemplate/models/product.dart';
 
 class ProductListItem extends StatelessWidget {
@@ -10,28 +11,51 @@ class ProductListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 5,
-      margin: const EdgeInsets.symmetric(vertical: 5),
+      margin: const EdgeInsets.symmetric(
+        vertical: 10,
+        horizontal: 15,
+      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-        height: 30,
+        height: 50,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Text(
-              product.name,
-              style: TextStyle(
-                fontSize: 16,
-              ),
+            Container(
+              height: 50,
+              width: 7,
+              decoration: BoxDecoration(
+                  color: categoryColors[product.category],
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(15),
+                    bottomLeft: Radius.circular(15),
+                  )),
             ),
-            Text(
-              "Stock: ${product.stock}",
-              style: TextStyle(
-                fontSize: 15,
-                color: Colors.grey,
-                fontStyle: FontStyle.italic,
+            Expanded(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 15,),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(
+                      product.name,
+                      style: TextStyle(
+                        fontSize: 17,
+                      ),
+                    ),
+                    Text(
+                      "Stock: ${product.stock}",
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.grey,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

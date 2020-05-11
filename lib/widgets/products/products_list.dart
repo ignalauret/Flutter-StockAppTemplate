@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stockapptemplate/models/product.dart';
 import 'package:stockapptemplate/providers/products.dart';
-import 'package:stockapptemplate/widgets/products/product_category_card.dart';
+import 'package:stockapptemplate/widgets/products/product_list_input_item.dart';
+import 'package:stockapptemplate/widgets/products/product_list_item.dart';
 
 class ProductsList extends StatelessWidget {
   ProductsList(this.isInput);
@@ -17,15 +18,14 @@ class ProductsList extends StatelessWidget {
         if (snapshot.data != null) {
           if (snapshot.data.isNotEmpty) {
             return ListView.builder(
-              itemBuilder: (ctx, index) => ProductCategoryCard(
-                ProductCategory.values[index],
-                snapshot.data
-                    .where((prod) =>
-                        prod.category == ProductCategory.values[index])
-                    .toList(),
-                isInput,
-              ),
-              itemCount: ProductCategory.values.length,
+              itemBuilder: (ctx, index) => isInput
+                  ? ProductListInputItem(
+                      snapshot.data[index],
+                    )
+                  : ProductListItem(
+                      snapshot.data[index],
+                    ),
+              itemCount: snapshot.data.length,
             );
           }
         }

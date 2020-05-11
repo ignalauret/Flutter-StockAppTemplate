@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stockapptemplate/providers/products.dart';
 import 'package:stockapptemplate/widgets/HomeScreenHeader.dart';
+import 'package:stockapptemplate/widgets/product_screen_header.dart';
 import 'package:stockapptemplate/widgets/products/products_list.dart';
 
 class ProductsScreen extends StatefulWidget {
@@ -22,7 +23,6 @@ class _ProductsScreenState extends State<ProductsScreen> {
   Widget build(BuildContext context) {
     final productsData = Provider.of<Products>(context);
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
         centerTitle: true,
         title: Text(
@@ -36,26 +36,10 @@ class _ProductsScreenState extends State<ProductsScreen> {
       ),
       body: Column(
         children: <Widget>[
-          HomeScreenHeader(
+          ProductScreenHeader(
               "Productos cargados: ${productsData.loadedProductsAmount}/${productsData.productsAmount}"),
           Expanded(
-            child: Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(30.0),
-                  topRight: Radius.circular(30.0),
-                ),
-              ),
-              child: Column(
-                children: <Widget>[
-                  Expanded(
-                    child: ProductsList(true),
-                  )
-                ],
-              ),
-            ),
+            child: ProductsList(true),
           ),
         ],
       ),

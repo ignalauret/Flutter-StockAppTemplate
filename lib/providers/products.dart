@@ -47,8 +47,8 @@ class Products extends ChangeNotifier {
   Future<void> updateProducts() async {
     for (Product prod in _products) {
       http.patch(
-          "https://derrico-6cb6b.firebaseio.com/products/${prod.id}.json",
-          body: json.encode({"stock": prod.stock}));
+          "https://derrico-6cb6b.firebaseio.com/branches/$selectedBranchId/stock.json",
+          body: json.encode({"${prod.id}": prod.stock}));
     }
   }
 

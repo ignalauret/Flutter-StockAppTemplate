@@ -39,14 +39,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: InkWell(
-                        onTap: () {
-                          branchesData.selectBranch(branches[index].id);
-                          Navigator.of(context).pop();
-                        },
+                          onTap: () {
+                            branchesData.selectBranch(branches[index].id);
+                            Navigator.of(context).pop();
+                          },
                           child: Text(
-                        branches[index].name,
-                        textAlign: TextAlign.center,
-                      )),
+                            branches[index].name,
+                            textAlign: TextAlign.center,
+                          )),
                     ),
                   ),
                   itemCount: branches.length,
@@ -62,7 +62,6 @@ class _HomeScreenState extends State<HomeScreen> {
     final branchesData = Provider.of<Branches>(context);
 
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
         centerTitle: true,
         leading: IconButton(
@@ -93,16 +92,22 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Column(
         children: <Widget>[
           HomeScreenHeader("Sucursal: ${branchesData.branch}"),
+          Container(
+            margin: const EdgeInsets.all(15),
+            color: Colors.white,
+            width: double.infinity,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text("Productos"),
+                Text("Filtrar por"),
+              ],
+            ),
+          ),
           Expanded(
             child: Container(
               width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(30.0),
-                  topRight: Radius.circular(30.0),
-                ),
-              ),
+              color: Colors.white,
               child: Column(
                 children: <Widget>[
                   Expanded(

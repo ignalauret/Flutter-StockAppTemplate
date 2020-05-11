@@ -14,6 +14,12 @@ Map<ProductCategory, IconData> categoryIcons = {
   ProductCategory.Utility: Icons.edit,
 };
 
+Map<ProductCategory, Color> categoryColors = {
+  ProductCategory.Food: Colors.red,
+  ProductCategory.Drink: Colors.lightBlue,
+  ProductCategory.Utility: Colors.brown,
+};
+
 class Product {
   Product({
     @required this.id,
