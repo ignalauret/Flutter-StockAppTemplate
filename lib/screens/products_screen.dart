@@ -70,6 +70,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                 ? () {
                     Provider.of<Products>(context, listen: false)
                         .endProductLoading();
+                    Navigator.of(context).pop();
                   }
                 : null,
       ),

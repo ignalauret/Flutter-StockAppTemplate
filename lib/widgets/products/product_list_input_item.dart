@@ -10,7 +10,7 @@ class ProductListInputItem extends StatelessWidget {
 
   final Product product;
 
-  void setStock(BuildContext context, int amount) {
+  void setStock(BuildContext context, String amount) {
     Provider.of<Products>(context, listen: false).setStock(product.id, amount);
   }
 
@@ -50,7 +50,7 @@ class ProductListInputItem extends StatelessWidget {
                     fontSize: 15,
                   ),
                 ),
-                onChanged: (s) => setStock(context, int.parse(s)),
+                onChanged: (s) => setStock(context, s),
               ),
             ),
           ],
